@@ -1,0 +1,16 @@
+{
+    "name": "pokemons/pokemons",
+    "description": "Pokemon, apanha-los todos. NSEO.",
+    "authors": [
+        {
+            "name": "Miguel",
+            "email": "miguel@vonq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "Pokemons": "src/"
+        }
+    }
+}
