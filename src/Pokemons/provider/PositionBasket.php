@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: miguelh
- * Date: 20/07/2017
- * Time: 22:28
- */
 
 namespace Pokemons\provider;
 
@@ -45,14 +39,11 @@ class PositionBasket
     public function addPosition(Position $position)
     {
         $hash = $position->getHash();
-
         $this->setCurrentPosition($position);
-
         if (!in_array($hash, $this->positions)) {
             $this->positions[] = $hash;
             return true;
         }
-
         return false;
     }
 

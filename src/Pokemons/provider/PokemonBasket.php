@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: miguelh
- * Date: 20/07/2017
- * Time: 22:07
- */
 
 namespace Pokemons\provider;
 
