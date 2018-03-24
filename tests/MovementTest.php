@@ -77,4 +77,14 @@ class MovementTest extends TestCase
         $this->assertEquals($currentAmount + 3, $boardController->getPokemonBasketAmount());
     }
 
+
+    /**
+     * @depends testBoardController
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidMovement(BoardController $boardController)
+    {
+        $boardController->addMovementToPosition(MovementFactory::create('A'));
+    }
+
 }

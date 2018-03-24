@@ -11,8 +11,14 @@ use Pokemons\Event\WestMovement;
 class MovementFactory
 {
 
-    static function create($type = 'start')
+    static function create($type)
     {
+        $types = ['N', 'S', 'O', 'W', 'E'];
+
+        if(!in_array($type,$types)){
+            throw new \InvalidArgumentException(sprintf('Movement %s not allowed', $type));
+        }
+
         switch ($type) {
             case "N":
                 return new NorthMovement();
