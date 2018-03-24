@@ -1,6 +1,8 @@
 **Pokemons Movement**
 
-Small php app to show movements from a character.
+Small php app to show how many pokemons the user can catch by inserting coordinates as input to the command.
+The user will start with one pokemon for the starting position. Will always catch a new one on each new position that he
+visits. If the same position is visited, no pokemon is going to be catched.
 
 There are 4 possible movements:
 - N
