@@ -4,6 +4,7 @@ namespace Pokemons\Factory;
 
 
 use Pokemons\Event\EastMovement;
+use Pokemons\Event\Movement;
 use Pokemons\Event\NorthMovement;
 use Pokemons\Event\SouthMovement;
 use Pokemons\Event\WestMovement;
@@ -11,11 +12,11 @@ use Pokemons\Event\WestMovement;
 class MovementFactory
 {
 
-    static function create($type)
+    static function create($type): Movement
     {
         $types = ['N', 'S', 'O', 'W', 'E'];
 
-        if(!in_array($type,$types)){
+        if (! in_array($type, $types)) {
             throw new \InvalidArgumentException(sprintf('Movement %s not allowed', $type));
         }
 

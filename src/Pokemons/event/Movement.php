@@ -16,6 +16,6 @@ interface Movement
      *
      * @return Position
      */
-    function execute(Position $position);
+    function execute(Position $position): Position;
 
 }

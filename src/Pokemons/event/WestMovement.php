@@ -4,7 +4,7 @@
 namespace Pokemons\Event;
 
 
-use Pokemons\provider\Position;
+use Pokemons\Provider\Position;
 
 class WestMovement implements Movement
 {
@@ -17,7 +17,7 @@ class WestMovement implements Movement
      *
      * @return Position
      */
-    function execute(Position $position)
+    function execute(Position $position): Position
     {
         $current_x = $position->getX();
         $position->setX(--$current_x);

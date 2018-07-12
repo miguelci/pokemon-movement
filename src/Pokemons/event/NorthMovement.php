@@ -3,7 +3,7 @@
 namespace Pokemons\Event;
 
 
-use Pokemons\provider\Position;
+use Pokemons\Provider\Position;
 
 class NorthMovement implements Movement
 {
@@ -12,7 +12,7 @@ class NorthMovement implements Movement
      *
      * @return Position
      */
-    public function execute(Position $position)
+    public function execute(Position $position): Position
     {
         $current_y = $position->getY();
         $position->setY(++$current_y);

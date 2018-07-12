@@ -3,7 +3,7 @@
 namespace Pokemons\Event;
 
 
-use Pokemons\provider\Position;
+use Pokemons\Provider\Position;
 
 class SouthMovement implements Movement
 {
@@ -15,7 +15,7 @@ class SouthMovement implements Movement
      *
      * @return Position
      */
-    function execute(Position $position)
+    function execute(Position $position): Position
     {
         $current_y = $position->getY();
         $position->setY(--$current_y);

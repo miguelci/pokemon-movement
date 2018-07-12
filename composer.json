@@ -3,8 +3,8 @@
     "description": "Pokemon, apanha-los todos. NSEO.",
     "authors": [
         {
-            "name": "Miguel",
-
+            "name": "Miguel"
+        }
     ],
     "require": {},
     "autoload": {

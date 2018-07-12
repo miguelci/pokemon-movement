@@ -1,9 +1,9 @@
 <?php
+declare(strict_types=1);
 
-namespace Pokemons\controller;
+namespace Pokemons\Controller;
 
-
-use Pokemons\event\Movement;
+use Pokemons\Event\Movement;
 use Pokemons\provider\Position;
 use Pokemons\provider\PositionBasket;
 use Pokemons\provider\PokemonBasket;
@@ -19,11 +19,11 @@ class BoardController
      */
     public function __construct()
     {
-        $this->positions     = new PositionBasket([]);
-        $this->pokemonBasket = new PokemonBasket(0);
+        $this->positions     = new PositionBasket();
+        $this->pokemonBasket = new PokemonBasket();
     }
 
-    public function setStartingPosition(Position $position)
+    public function setStartingPosition(Position $position): void
     {
         $this->positions->addPosition($position);
 
@@ -38,7 +38,7 @@ class BoardController
      *
      * @param Movement $movement
      */
-    public function addMovementToPosition(Movement $movement)
+    public function addMovementToPosition(Movement $movement): void
     {
         $new_position = $movement->execute($this->positions->getCurrentPosition());
 
@@ -53,7 +53,7 @@ class BoardController
      *
      * @return int
      */
-    public function getPokemonBasketAmount()
+    public function getPokemonBasketAmount(): int
     {
         return $this->pokemonBasket->getAmount();
     }

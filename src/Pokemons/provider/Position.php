@@ -24,7 +24,7 @@ class Position
     /**
      * @return int
      */
-    public function getX()
+    public function getX(): int
     {
         return $this->x;
     }
@@ -40,7 +40,7 @@ class Position
     /**
      * @return int
      */
-    public function getY()
+    public function getY(): int
     {
         return $this->y;
     }
@@ -58,7 +58,7 @@ class Position
      *
      * @return string
      */
-    public function getHash()
+    public function getHash(): string
     {
         return "x" . $this->x . "y" . $this->y;
     }

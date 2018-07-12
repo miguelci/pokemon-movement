@@ -7,14 +7,14 @@ class PositionBasket
 {
 
     private $positions;
-    private $current_position;
+    private $currentPosition;
 
     /**
      * PositionBasket constructor.
      *
      * @param array $positions
      */
-    public function __construct(array $positions)
+    public function __construct(array $positions = [])
     {
         $this->positions = $positions;
     }
@@ -36,11 +36,11 @@ class PositionBasket
      *
      * @return bool
      */
-    public function addPosition(Position $position)
+    public function addPosition(Position $position): bool
     {
         $hash = $position->getHash();
         $this->setCurrentPosition($position);
-        if (!in_array($hash, $this->positions)) {
+        if (! in_array($hash, $this->positions)) {
             $this->positions[] = $hash;
             return true;
         }
@@ -52,23 +52,23 @@ class PositionBasket
      *
      * @return Position
      */
-    public function getCurrentPosition()
+    public function getCurrentPosition(): Position
     {
         if (empty($this->positions)) {
             return new Position(0, 0);
         }
 
-        return $this->current_position;
+        return $this->currentPosition;
     }
 
     /**
      * Sets the current position.
      *
-     * @param Position $current_position
+     * @param Position $currentPosition
      */
-    public function setCurrentPosition($current_position)
+    public function setCurrentPosition(Position $currentPosition)
     {
-        $this->current_position = $current_position;
+        $this->currentPosition = $currentPosition;
     }
 
 }

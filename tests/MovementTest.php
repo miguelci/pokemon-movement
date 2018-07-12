@@ -3,7 +3,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use Pokemons\controller\BoardController;
+use Pokemons\Controller\BoardController;
 use Pokemons\Event\EastMovement;
 use Pokemons\Event\NorthMovement;
 use Pokemons\Event\SouthMovement;
@@ -13,29 +13,28 @@ use Pokemons\provider\Position;
 
 class MovementTest extends TestCase
 {
+    private $boardController;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->boardController = new BoardController();
+    }
 
     public function testBoardController()
     {
-        $board  = new BoardController();
-        $amount = $board->getPokemonBasketAmount();
+        $amount = $this->boardController->getPokemonBasketAmount();
         $this->assertEquals(0, $amount);
-
-        return $board;
     }
 
-    /**
-     * @depends testBoardController
-     */
-    public function testStartingPosition(BoardController $boardController)
+    public function testStartingPosition()
     {
         $position = new Position(0, 0);
         $this->assertEquals(0, $position->getX());
         $this->assertEquals(0, $position->getY());
 
-        $boardController->setStartingPosition($position);
-        $this->assertEquals(1, $boardController->getPokemonBasketAmount());
-
-        return $boardController;
+        $this->boardController->setStartingPosition($position);
+        $this->assertEquals(1, $this->boardController->getPokemonBasketAmount());
     }
 
     public function testMovementFactory()
@@ -53,38 +52,29 @@ class MovementTest extends TestCase
         self::assertInstanceOf(EastMovement::class, $movement);
     }
 
-    /**
-     * @depends testBoardController
-     */
-    public function testOneMovement(BoardController $boardController)
+    public function testOneMovement()
     {
         $movement = MovementFactory::create('N');
-        $boardController->addMovementToPosition($movement);
-        $this->assertEquals(2, $boardController->getPokemonBasketAmount());
+        $this->boardController->addMovementToPosition($movement);
+        $this->assertEquals(1, $this->boardController->getPokemonBasketAmount());
     }
 
-    /**
-     * @depends testBoardController
-     */
-    public function testMovementAndBackToSamePlace(BoardController $boardController)
+    public function testMovementAndBackToSamePlace()
     {
-        $currentAmount = $boardController->getPokemonBasketAmount();
         $coordinates   = ['N', 'E', 'S', 'O']; // should only catch 3 pokemons because will return to the same position
 
         foreach ($coordinates as $coordinate) {
-            $boardController->addMovementToPosition(MovementFactory::create($coordinate));
+            $this->boardController->addMovementToPosition(MovementFactory::create($coordinate));
         }
-        $this->assertEquals($currentAmount + 3, $boardController->getPokemonBasketAmount());
+        $this->assertEquals(4, $this->boardController->getPokemonBasketAmount());
     }
 
-
     /**
-     * @depends testBoardController
      * @expectedException \InvalidArgumentException
      */
-    public function testInvalidMovement(BoardController $boardController)
+    public function testCreateInvalidMovement()
     {
-        $boardController->addMovementToPosition(MovementFactory::create('A'));
+        MovementFactory::create('A');
     }
 
 }

@@ -16,17 +16,17 @@ class PokemonBasket
      *
      * @param int $amount
      */
-    public function __construct($amount)
+    public function __construct($amount = 0)
     {
         $this->amount = $amount;
     }
 
     /**
-     * Returns the current amount of pokemons.
+     * Returns the current amount of pokemons
      *
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->amount;
     }
