@@ -40,10 +40,10 @@ class BoardController
      */
     public function addMovementToPosition(Movement $movement): void
     {
-        $new_position = $movement->execute($this->positions->getCurrentPosition());
+        $newPosition = $movement->execute($this->positions->getCurrentPosition());
 
         $amount = $this->pokemonBasket->getAmount();
-        if ($this->positions->addPosition($new_position)) {
+        if ($this->positions->addPosition($newPosition)) {
             $this->pokemonBasket->setAmount(++$amount);
         }
     }

@@ -16,8 +16,8 @@ class EastMovement implements Movement
      */
     public function execute(Position $position): Position
     {
-        $current_x = $position->getX();
-        $position->setX(++$current_x);
+        $currentX = $position->getX();
+        $position->setX(++$currentX);
         return $position;
     }
 }

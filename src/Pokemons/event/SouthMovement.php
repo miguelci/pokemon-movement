@@ -17,8 +17,8 @@ class SouthMovement implements Movement
      */
     function execute(Position $position): Position
     {
-        $current_y = $position->getY();
-        $position->setY(--$current_y);
+        $currentY = $position->getY();
+        $position->setY(--$currentY);
 
         return $position;
     }
